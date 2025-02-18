@@ -1,11 +1,10 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { motion } from "framer-motion";
 
 const Background = () => {
-  const containerRef = useRef(null);
-
+  // const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -28,7 +27,7 @@ const Background = () => {
       "rgba(70, 130, 180, 0.7)", // Steel Blue
     ];
 
-    const elements = [];
+    const elements: HTMLDivElement[] = [];
 
     // Function to create animated lines
     const createLines = () => {

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 export default function Skills() {
   return (
     <section className="w-full py-16 bg-gray-800 text-center">

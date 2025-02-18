@@ -2,9 +2,9 @@
 'use client';
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaJsSquare, FaCogs } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiDocker } from "react-icons/si";
-import { FaGitAlt, FaLinkedin, FaEnvelope, FaGlobe } from "react-icons/fa";
-import { motion } from 'framer-motion';
+import { FaGitAlt, FaLinkedin, FaEnvelope} from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
 import Navbar from "../app/components/Navbar/page";
 import Background from "../app/components/background/page";
 import ContactForm from "./components/contact/page";
@@ -44,7 +44,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          Hi, I'm <span className="text-[#6B778D]">Ahmed Allali <span className="text-[#6B778D]">👋🏻</span></span>
+          Hi, I&apos;m <span className="text-[#6B778D]">Ahmed Allali <span className="text-[#6B778D]">👋🏻</span></span>
         </motion.h1>
 
         <motion.p
@@ -53,7 +53,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          I'm a <span className="font-semibold text-sky-400">Frontend Developer</span> passionate about crafting responsive, accessible, and user-friendly web applications.
+          I&apos;m a <span className="font-semibold text-sky-400">Frontend Developer</span> passionate about crafting responsive, accessible, and user-friendly web applications.
           I specialize in <span className="font-semibold text-sky-400">Next.js, React, TypeScript, and Tailwind CSS</span> to build modern, high-performance UIs.
         </motion.p>
 
