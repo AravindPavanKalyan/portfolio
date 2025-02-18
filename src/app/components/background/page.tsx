@@ -1,14 +1,24 @@
-// components/Background.js
 'use client';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { motion } from "framer-motion";
 
 const Background = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    
+    if (!container) return;
+
+    // Function to update background height dynamically
+    const updateHeight = () => {
+      container.style.height = `${document.documentElement.scrollHeight}px`;
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    window.addEventListener("scroll", updateHeight);
+
     // Color palette
     const colors = [
       "rgba(0, 128, 128, 0.7)",  // Teal
@@ -28,25 +38,20 @@ const Background = () => {
         container.appendChild(line);
         elements.push(line);
 
-        const width = gsap.utils.random(2, 6); // Line thickness
-        const length = gsap.utils.random(100, 300); // Line length
-        const x = gsap.utils.random(-50, window.innerWidth + 50);
-        const y = gsap.utils.random(0, window.innerHeight);
-
         gsap.set(line, {
-          width: length,
-          height: width,
-          x: x,
-          y: y,
+          width: gsap.utils.random(100, 300),
+          height: gsap.utils.random(2, 6),
+          x: gsap.utils.random(0, window.innerWidth * 0.9),
+          y: gsap.utils.random(0, window.innerHeight),
           backgroundColor: gsap.utils.random(colors),
           position: 'absolute',
           opacity: 0.8,
           transformOrigin: 'left center',
-          rotate: gsap.utils.random(-30, 30), // Random angle
+          rotate: gsap.utils.random(-30, 30),
         });
 
         gsap.to(line, {
-          x: window.innerWidth + 100, // Move right
+          x: window.innerWidth - 50,
           duration: gsap.utils.random(2, 5),
           ease: 'power2.out',
           repeat: -1,
@@ -62,15 +67,11 @@ const Background = () => {
         container.appendChild(circle);
         elements.push(circle);
 
-        const size = gsap.utils.random(20, 80);
-        const x = gsap.utils.random(0, window.innerWidth);
-        const y = gsap.utils.random(0, window.innerHeight);
-
         gsap.set(circle, {
-          width: size,
-          height: size,
-          x: x,
-          y: y,
+          width: gsap.utils.random(20, 80),
+          height: gsap.utils.random(20, 80),
+          x: gsap.utils.random(0, window.innerWidth),
+          y: gsap.utils.random(0, window.innerHeight),
           borderRadius: '50%',
           backgroundColor: gsap.utils.random(colors),
           position: 'absolute',
@@ -96,15 +97,11 @@ const Background = () => {
         container.appendChild(particle);
         elements.push(particle);
 
-        const size = gsap.utils.random(3, 8);
-        const x = gsap.utils.random(0, window.innerWidth);
-        const y = gsap.utils.random(0, window.innerHeight);
-
         gsap.set(particle, {
-          width: size,
-          height: size,
-          x: x,
-          y: y,
+          width: gsap.utils.random(3, 8),
+          height: gsap.utils.random(3, 8),
+          x: gsap.utils.random(0, window.innerWidth),
+          y: gsap.utils.random(0, window.innerHeight),
           borderRadius: '50%',
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           position: 'absolute',
@@ -121,13 +118,15 @@ const Background = () => {
       }
     };
 
-    // Create all elements
+    // Run animations
     createLines();
     createCircles();
     createParticles();
 
     // Cleanup function
     return () => {
+      window.removeEventListener("resize", updateHeight);
+      window.removeEventListener("scroll", updateHeight);
       elements.forEach(el => el.remove());
     };
   }, []);
@@ -135,9 +134,9 @@ const Background = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute top-0 left-0 w-full h-full overflow-hidden z-0"
+      className="fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[-1]"
       style={{
-        background: 'linear-gradient(135deg, #001f3f, #003366, #004080)',
+        background: '#090E1A',
       }}
     />
   );
