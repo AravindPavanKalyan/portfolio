@@ -265,7 +265,7 @@ export default function Home() {
             </motion.a>
             
             <motion.a
-              href="./cv.pdf"
+              href="./cv-eng-.pdf"
               target="_blank"
               className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/20 transition-all duration-300 flex items-center gap-3"
               whileHover={{ scale: 1.05, y: -2, borderColor: "rgba(255,255,255,0.5)" }}
@@ -289,7 +289,7 @@ export default function Home() {
             className="flex justify-center space-x-8"
           >
             {[
-              { icon: FaGithub, href: "https://github.com/ahmedallali", color: "hover:text-gray-400" },
+              { icon: FaGithub, href: "https://github.com/ahallali", color: "hover:text-gray-400" },
               { icon: FaLinkedin, href: "https://www.linkedin.com/in/ahmedallali/", color: "hover:text-blue-400" },
               { icon: FaEnvelope, href: "mailto:ahmedallali1@outlook.com", color: "hover:text-green-400" },
             ].map((social, index) => (
@@ -1434,7 +1434,7 @@ export default function Home() {
               className="flex justify-center space-x-6 md:space-x-8"
             >
               <motion.a 
-                href="https://github.com/ahmedallali" 
+                href="https://github.com/ahallali" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="group relative"
